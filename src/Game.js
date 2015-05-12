@@ -1,5 +1,6 @@
 import R from 'ramda';
 
+
 class Game {
 
   createBoard(gridSize){
@@ -21,6 +22,16 @@ class Game {
   checkCell(index, board){
     let message = board[index].value === 'on' ? 'hit' : 'miss';
     board[index].checked = true;
+
+
+    if(board[index].checked === true){
+      let audio = document.getElementById('hitsound');
+      audio.play();
+    } else if(board[index].checked === false) {
+      let splash = document.getElementById('splash');
+      splash.play();
+    }
+
     let gameEnded = this.isOver(board);
     if(gameEnded){
       alert('its over: challenger won!');

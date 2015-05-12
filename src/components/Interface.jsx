@@ -1,7 +1,10 @@
 import React from 'react';
 
 import Board from './Board.jsx';
-import Game from '../Game.js'
+import Game from '../Game.js';
+import Sound from '../backgroundsound.mp3';
+import HitSound from '../WhipCrack.mp3';
+import Splash from '../splash.mp3';
 
 class Interface extends React.Component {
 
@@ -38,6 +41,9 @@ class Interface extends React.Component {
         { started && <Board boardType="game" handleClick={ this.checkCell.bind(this) } board={ board }></Board> }
 
         <button disabled={ started } onClick={ this.startGame.bind(this) }>Start Game</button>
+        <audio id="bgmusic" src={Sound}></audio>
+        <audio id="hitsound" src={HitSound}></audio>
+        <audio id="splash" src={Splash}></audio>
       </section>
     )
   }
